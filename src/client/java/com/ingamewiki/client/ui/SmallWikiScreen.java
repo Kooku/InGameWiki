@@ -165,15 +165,15 @@ public final class SmallWikiScreen extends Screen {
 		drawSelectedResultHighlight(guiGraphics);
 		drawLeftPanelMessages(guiGraphics, layout);
 
+		boolean hasQuery = searchField != null && !searchField.getValue().trim().isEmpty();
+		if (!hasQuery) {
+			drawHomeState(guiGraphics, layout);
+			return;
+		}
+
 		Article articleToRender = selectedArticle;
 		if (articleToRender == null) {
 			articleToRender = InGameWikiClient.articleRepository().globalFailureArticle().orElse(null);
-		}
-
-		boolean hasQuery = searchField != null && !searchField.getValue().trim().isEmpty();
-		if (!hasQuery && articleToRender == null) {
-			drawHomeState(guiGraphics, layout);
-			return;
 		}
 
 		if (articleToRender == null) {
