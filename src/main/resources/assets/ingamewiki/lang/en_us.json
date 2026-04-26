@@ -5,6 +5,7 @@
 	"screen.ingamewiki.results": "Results",
 	"screen.ingamewiki.search": "Search",
 	"screen.ingamewiki.search_placeholder": "Search villagers, diamonds, slime...",
+	"screen.ingamewiki.no_results": "No results for \"%s\"",
 	"screen.ingamewiki.no_selection": "No article selected",
 	"screen.ingamewiki.no_selection_hint": "Try a common survival term in the search box.",
 	"screen.ingamewiki.section.quick_answer": "Quick Answer",

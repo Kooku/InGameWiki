@@ -140,3 +140,5 @@ Once manual lookup is solid, the first optional enhancement is a lightweight con
 - `Hold H` to search the currently targeted thing
 
 That should only happen after the manual flow is clearly useful on its own.
+
+Before that contextual work, a likely UX follow-up is a dedicated `InGameWiki` home page so first open has a stronger landing state than a blank or auto-selected article list.

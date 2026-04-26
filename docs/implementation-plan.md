@@ -296,7 +296,20 @@ Acceptance criteria:
 - a player can read the full article without overlapping UI
 - related topics navigate correctly
 
-### Phase 7: Starter Content Pass
+### Phase 7: Home Page UX
+
+Deliverables:
+
+- a dedicated `InGameWiki` landing view instead of dropping straight into article results
+- featured/common topics
+- an intentional empty state when no search is active
+
+Acceptance criteria:
+
+- first open feels purposeful even before the player types
+- the screen has a clear "home" state separate from search results
+
+### Phase 8: Starter Content Pass
 
 Deliverables:
 
