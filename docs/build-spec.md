@@ -23,7 +23,7 @@ Implementation note:
 
 - Base package: `com.ingamewiki`
 - Mod ID: `ingamewiki`
-- Main UI surface: `smallWiki`
+- Main UI surface: `InGameWiki`
 
 ## Content Loading Strategy
 
@@ -56,7 +56,7 @@ Current decision:
 The first implementation pass should produce:
 
 1. a runnable Fabric mod project for `1.21.10`
-2. a pause-menu entry into `smallWiki`
+2. a pause-menu entry into `InGameWiki`
 3. a working screen with sample data
 4. bundled article loading at startup
 5. simple alias-aware search

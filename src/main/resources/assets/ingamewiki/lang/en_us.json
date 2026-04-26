@@ -1,7 +1,7 @@
 {
 	"gui.back": "Back",
-	"menu.ingamewiki.open": "smallWiki",
-	"screen.ingamewiki.title": "smallWiki",
+	"menu.ingamewiki.open": "InGameWiki",
+	"screen.ingamewiki.title": "InGameWiki",
 	"screen.ingamewiki.results": "Results",
 	"screen.ingamewiki.search": "Search",
 	"screen.ingamewiki.search_placeholder": "Search villagers, diamonds, slime...",

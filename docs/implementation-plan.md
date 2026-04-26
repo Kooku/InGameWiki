@@ -6,7 +6,7 @@ Build the first playable version of `InGameWiki` as a Fabric client-side mod for
 
 The first version should let a player:
 
-1. open `smallWiki` from the pause menu
+1. open `InGameWiki` from the pause menu
 2. search a topic in plain language
 3. read a concise in-game answer
 4. follow related topics without leaving the game
@@ -19,7 +19,7 @@ Included:
 
 - Fabric project setup
 - pause-menu entry point
-- `smallWiki` screen
+- `InGameWiki` screen
 - local article data
 - manual search
 - article rendering
@@ -72,7 +72,7 @@ Excluded:
 ### UI Strategy
 
 - Use vanilla screen widgets
-- Add one pause-menu button to open `smallWiki`
+- Add one pause-menu button to open `InGameWiki`
 - Start with a two-pane layout:
   - left: search box and results
   - right: selected article
@@ -179,7 +179,7 @@ V1 search should be simple and deterministic.
 
 ### Entry Point
 
-- Add a `smallWiki` button to the pause screen
+- Add an `InGameWiki` button to the pause screen
 - Open the main screen without closing the current world/session
 
 ### Main Screen
@@ -237,7 +237,7 @@ Deliverables:
 
 Acceptance criteria:
 
-- player can open and close `smallWiki` from an active world
+- player can open and close `InGameWiki` from an active world
 - pause menu layout is not broken at common resolutions
 
 ### Phase 3: Screen Skeleton
@@ -411,7 +411,7 @@ Mitigation:
 
 The MVP is done when all of the following are true:
 
-- A player can open `smallWiki` from the pause menu in a Fabric client.
+- A player can open `InGameWiki` from the pause menu in a Fabric client.
 - The mod ships with a local article set.
 - Search works for common plain-language queries.
 - Articles render entirely in-game with no browser handoff.

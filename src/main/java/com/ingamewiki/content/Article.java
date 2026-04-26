@@ -19,4 +19,18 @@ public record Article(
 		commonMistakes = commonMistakes == null ? List.of() : List.copyOf(commonMistakes);
 		relatedTopics = relatedTopics == null ? List.of() : List.copyOf(relatedTopics);
 	}
+
+	public static Article unavailable(String articleId, String title, String quickAnswer, List<String> keyFacts) {
+		return new Article(
+			articleId,
+			title,
+			List.of(),
+			"system",
+			"",
+			quickAnswer,
+			keyFacts,
+			List.of(),
+			List.of()
+		);
+	}
 }

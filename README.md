@@ -23,7 +23,7 @@ The goal is not to mirror the full Minecraft Wiki. The goal is to answer practic
 
 Version 1 is intentionally narrow:
 
-- `Esc -> smallWiki`
+- `Esc -> InGameWiki`
 - Search by plain language
 - Curated article set
 - No popups
@@ -47,7 +47,7 @@ See [docs/build-spec.md](/Users/kuyoungshin/Coding/InGameWiki/docs/build-spec.md
 The repository now contains a working Fabric scaffold for `1.21.10`:
 
 - Java 21 build setup
-- pause-menu `smallWiki` entry point
+- pause-menu `InGameWiki` entry point
 - starter in-game screen
 - bundled article JSON loading
 - basic alias-aware search

@@ -65,9 +65,6 @@ public final class SmallWikiScreen extends Screen {
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
 		renderBackground(guiGraphics, mouseX, mouseY, delta);
-		super.render(guiGraphics, mouseX, mouseY, delta);
-
-		guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 16, 0xFFFFFF);
 
 		int leftPanelX = 12;
 		int leftPanelWidth = 178;
@@ -79,9 +76,17 @@ public final class SmallWikiScreen extends Screen {
 		guiGraphics.fill(leftPanelX, panelTop, leftPanelX + leftPanelWidth, panelBottom, 0xAA101010);
 		guiGraphics.fill(rightPanelX, panelTop, rightPanelX + rightPanelWidth, panelBottom, 0xAA101010);
 
+		super.render(guiGraphics, mouseX, mouseY, delta);
+		guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, 16, 0xFFFFFF);
+
 		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.results"), 20, 58, 0xC8C8C8);
 
-		if (selectedArticle == null) {
+		Article articleToRender = selectedArticle;
+		if (articleToRender == null) {
+			articleToRender = InGameWikiClient.articleRepository().globalFailureArticle().orElse(null);
+		}
+
+		if (articleToRender == null) {
 			guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.no_selection"), rightPanelX + 12, 28, 0xFFFFFF);
 			guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.no_selection_hint"), rightPanelX + 12, 44, 0xA0A0A0);
 			return;
@@ -91,24 +96,25 @@ public final class SmallWikiScreen extends Screen {
 		int textY = 28;
 		int textWidth = rightPanelWidth - 24;
 
-		guiGraphics.drawString(this.font, Component.literal(selectedArticle.title()), textX, textY, 0xFFFFFF);
+		guiGraphics.drawString(this.font, Component.literal(articleToRender.title()), textX, textY, 0xFFFFFF);
 		textY += 14;
 
-		if (!selectedArticle.versionNote().isBlank()) {
-			guiGraphics.drawString(this.font, Component.literal(selectedArticle.versionNote()), textX, textY, 0xA0A0A0);
+		if (!articleToRender.versionNote().isBlank()) {
+			guiGraphics.drawString(this.font, Component.literal(articleToRender.versionNote()), textX, textY, 0xA0A0A0);
 			textY += 18;
 		}
 
-		textY = drawSection(guiGraphics, Component.translatable("screen.ingamewiki.section.quick_answer"), Component.literal(selectedArticle.quickAnswer()), textX, textY, textWidth);
-		textY = drawBulletedSection(guiGraphics, Component.translatable("screen.ingamewiki.section.key_facts"), selectedArticle.keyFacts(), textX, textY, textWidth);
-		textY = drawBulletedSection(guiGraphics, Component.translatable("screen.ingamewiki.section.common_mistakes"), selectedArticle.commonMistakes(), textX, textY, textWidth);
+		textY = drawSection(guiGraphics, Component.translatable("screen.ingamewiki.section.quick_answer"), Component.literal(articleToRender.quickAnswer()), textX, textY, textWidth);
+		textY = drawBulletedSection(guiGraphics, Component.translatable("screen.ingamewiki.section.key_facts"), articleToRender.keyFacts(), textX, textY, textWidth);
+		textY = drawBulletedSection(guiGraphics, Component.translatable("screen.ingamewiki.section.common_mistakes"), articleToRender.commonMistakes(), textX, textY, textWidth);
 
-		if (!selectedArticle.relatedTopics().isEmpty()) {
+		if (!articleToRender.relatedTopics().isEmpty()) {
 			guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.section.related_topics"), textX, textY, 0xFFE082);
 			textY += 12;
-			for (String relatedId : selectedArticle.relatedTopics()) {
+			for (String relatedId : articleToRender.relatedTopics()) {
 				String relatedTitle = InGameWikiClient.articleRepository()
 					.findById(relatedId)
+					.or(() -> InGameWikiClient.articleRepository().fallbackForId(relatedId))
 					.map(Article::title)
 					.orElse(relatedId);
 				textY = drawWrappedText(guiGraphics, Component.literal("• " + relatedTitle), textX, textY, textWidth, 0xC8D6FF);
