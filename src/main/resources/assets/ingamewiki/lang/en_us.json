@@ -13,6 +13,7 @@
 	"screen.ingamewiki.home_example_2": "• diamond y level",
 	"screen.ingamewiki.home_example_3": "• librarian mending",
 	"screen.ingamewiki.no_results": "No results for \"%s\"",
+	"screen.ingamewiki.results_count": "%s-%s of %s topics",
 	"screen.ingamewiki.no_selection": "No article selected",
 	"screen.ingamewiki.no_selection_hint": "Try a common survival term in the search box.",
 	"screen.ingamewiki.section.quick_answer": "Quick Answer",

@@ -405,10 +405,8 @@ public final class SmallWikiScreen extends Screen {
 		updateResultButtons();
 
 		if (!hasQuery) {
-			if (selectedArticle != null && currentResults.stream().noneMatch(article -> article.id().equals(selectedArticle.id()))) {
-				selectedArticle = null;
-				articleScroll = 0;
-			}
+			selectedArticle = null;
+			articleScroll = 0;
 		} else if (autoSelectTopResult) {
 			selectedArticle = currentResults.isEmpty() ? null : currentResults.getFirst();
 			articleScroll = 0;
