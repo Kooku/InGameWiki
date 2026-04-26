@@ -22,6 +22,12 @@ public final class SmallWikiScreen extends Screen {
 	private static final int PANEL_BACKGROUND = 0xAA101010;
 	private static final int PANEL_BORDER = 0x80FFFFFF;
 	private static final int SELECTED_RESULT_BACKGROUND = 0x80446A9F;
+	private static final int TEXT_PRIMARY = 0xFFFFFFFF;
+	private static final int TEXT_SECONDARY = 0xFFC8C8C8;
+	private static final int TEXT_MUTED = 0xFFA0A0A0;
+	private static final int TEXT_HINT = 0xFFB8B8B8;
+	private static final int TEXT_WARNING = 0xFFFFE082;
+	private static final int TEXT_LINK = 0xFF7DC9FF;
 	private static final int ARTICLE_SCROLL_STEP = 18;
 	private static final int LINK_HEIGHT = 12;
 	private static final int RESULT_SCROLL_STEP = 1;
@@ -159,8 +165,8 @@ public final class SmallWikiScreen extends Screen {
 
 		super.render(guiGraphics, mouseX, mouseY, delta);
 
-		guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, layout.panelTop + 4, 0xFFFFFF);
-		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.results"), layout.leftPanelX + INNER_PADDING, layout.resultsLabelY, 0xC8C8C8);
+		guiGraphics.drawString(this.font, this.title, layout.rightPanelX + INNER_PADDING, layout.panelTop + 8, TEXT_PRIMARY);
+		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.results"), layout.leftPanelX + INNER_PADDING, layout.resultsLabelY, TEXT_SECONDARY);
 
 		drawSelectedResultHighlight(guiGraphics);
 		drawLeftPanelMessages(guiGraphics, layout);
@@ -206,7 +212,7 @@ public final class SmallWikiScreen extends Screen {
 				layout.leftPanelX + INNER_PADDING,
 				layout.resultsBottom + 8,
 				layout.leftInnerWidth,
-				0xB8B8B8
+				TEXT_HINT
 			);
 		} else if (currentResults.isEmpty()) {
 			guiGraphics.drawWordWrap(
@@ -215,7 +221,7 @@ public final class SmallWikiScreen extends Screen {
 				layout.leftPanelX + INNER_PADDING,
 				layout.resultsTop + 4,
 				layout.leftInnerWidth,
-				0xD8D8D8
+				TEXT_PRIMARY
 			);
 		}
 
@@ -226,7 +232,7 @@ public final class SmallWikiScreen extends Screen {
 				Component.translatable("screen.ingamewiki.results_count", resultScroll + 1, shownEnd, currentResults.size()),
 				layout.leftPanelX + INNER_PADDING,
 				layout.panelBottom - INNER_PADDING - 9,
-				0xA0A0A0
+					TEXT_MUTED
 			);
 		}
 	}
@@ -235,7 +241,7 @@ public final class SmallWikiScreen extends Screen {
 		int textX = layout.rightPanelX + INNER_PADDING;
 		int textY = layout.articleViewportTop;
 
-		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.home_title"), textX, textY, 0xFFFFFF);
+		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.home_title"), textX, textY, TEXT_PRIMARY);
 		textY += 18;
 
 		guiGraphics.drawWordWrap(
@@ -244,28 +250,28 @@ public final class SmallWikiScreen extends Screen {
 			textX,
 			textY,
 			layout.rightInnerWidth,
-			0xC8C8C8
+			TEXT_SECONDARY
 		);
 		textY += this.font.wordWrapHeight(Component.translatable("screen.ingamewiki.home_hint"), layout.rightInnerWidth) + 12;
 
-		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.home_examples_label"), textX, textY, 0xFFE082);
+		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.home_examples_label"), textX, textY, TEXT_WARNING);
 		textY += 14;
 
-		textY = drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_1"), textX, textY, layout.rightInnerWidth, 0xFFFFFF);
-		textY = drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_2"), textX, textY, layout.rightInnerWidth, 0xFFFFFF);
-		drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_3"), textX, textY, layout.rightInnerWidth, 0xFFFFFF);
+		textY = drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_1"), textX, textY, layout.rightInnerWidth, TEXT_PRIMARY);
+		textY = drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_2"), textX, textY, layout.rightInnerWidth, TEXT_PRIMARY);
+		drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_3"), textX, textY, layout.rightInnerWidth, TEXT_PRIMARY);
 	}
 
 	private void drawRightPanelEmptyState(GuiGraphics guiGraphics, Layout layout) {
 		int textX = layout.rightPanelX + INNER_PADDING;
-		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.no_selection"), textX, layout.articleViewportTop, 0xFFFFFF);
+		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.no_selection"), textX, layout.articleViewportTop, TEXT_PRIMARY);
 		guiGraphics.drawWordWrap(
 			this.font,
 			Component.translatable("screen.ingamewiki.no_selection_hint"),
 			textX,
 			layout.articleViewportTop + 16,
 			layout.rightInnerWidth,
-			0xA0A0A0
+			TEXT_MUTED
 		);
 	}
 
@@ -299,24 +305,24 @@ public final class SmallWikiScreen extends Screen {
 		}
 
 		String scrollLabel = (articleScroll > 0 ? "\u2191 " : "") + (articleScroll < maxArticleScroll() ? "\u2193" : "");
-		guiGraphics.drawString(this.font, Component.literal(scrollLabel.trim()), layout.rightPanelRight - INNER_PADDING - 10, layout.articleViewportTop, 0xA0A0A0);
+		guiGraphics.drawString(this.font, Component.literal(scrollLabel.trim()), layout.rightPanelRight - INNER_PADDING - 10, layout.articleViewportTop, TEXT_MUTED);
 	}
 
 	private void renderArticle(GuiGraphics guiGraphics, Article article, int x, int y, int width, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font, Component.literal(article.title()), x, y, 0xFFFFFF);
+		guiGraphics.drawString(this.font, Component.literal(article.title()), x, y, TEXT_PRIMARY);
 		y += 14;
 
 		if (!article.versionNote().isBlank()) {
-			guiGraphics.drawString(this.font, Component.literal(article.versionNote()), x, y, 0xA0A0A0);
+			guiGraphics.drawString(this.font, Component.literal(article.versionNote()), x, y, TEXT_MUTED);
 			y += 18;
 		}
 
-		y = drawSection(guiGraphics, Component.translatable("screen.ingamewiki.section.quick_answer"), Component.literal(article.quickAnswer()), x, y, width, 0xFFFFFF);
-		y = drawBulletedSection(guiGraphics, Component.translatable("screen.ingamewiki.section.key_facts"), article.keyFacts(), x, y, width, 0xFFFFFF);
-		y = drawBulletedSection(guiGraphics, Component.translatable("screen.ingamewiki.section.common_mistakes"), article.commonMistakes(), x, y, width, 0xFFFFFF);
+		y = drawSection(guiGraphics, Component.translatable("screen.ingamewiki.section.quick_answer"), Component.literal(article.quickAnswer()), x, y, width, TEXT_PRIMARY);
+		y = drawBulletedSection(guiGraphics, Component.translatable("screen.ingamewiki.section.key_facts"), article.keyFacts(), x, y, width, TEXT_PRIMARY);
+		y = drawBulletedSection(guiGraphics, Component.translatable("screen.ingamewiki.section.common_mistakes"), article.commonMistakes(), x, y, width, TEXT_PRIMARY);
 
 		if (!article.relatedTopics().isEmpty()) {
-			guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.section.related_topics"), x, y, 0xFFE082);
+			guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.section.related_topics"), x, y, TEXT_WARNING);
 			y += 12;
 			for (String relatedId : article.relatedTopics()) {
 				Optional<Article> relatedArticle = InGameWikiClient.articleRepository()
@@ -324,7 +330,7 @@ public final class SmallWikiScreen extends Screen {
 					.or(() -> InGameWikiClient.articleRepository().fallbackForId(relatedId));
 				String relatedTitle = relatedArticle.map(Article::title).orElse(relatedId);
 				boolean hovered = isLinkHovered(mouseX, mouseY, x, y, width);
-				int color = hovered ? 0xFFFFFF : 0x7DC9FF;
+				int color = hovered ? TEXT_PRIMARY : TEXT_LINK;
 				guiGraphics.drawString(this.font, Component.literal("> " + relatedTitle), x, y, color);
 				relatedTopicHitboxes.add(new RelatedTopicHitbox(relatedId, x, y, width, LINK_HEIGHT));
 				y += LINK_HEIGHT + 2;
@@ -353,7 +359,7 @@ public final class SmallWikiScreen extends Screen {
 	}
 
 	private int drawSection(GuiGraphics guiGraphics, Component heading, Component body, int x, int y, int width, int bodyColor) {
-		guiGraphics.drawString(this.font, heading, x, y, 0xFFE082);
+		guiGraphics.drawString(this.font, heading, x, y, TEXT_WARNING);
 		y += 12;
 		return drawWrappedText(guiGraphics, body, x, y, width, bodyColor) + 4;
 	}
@@ -363,7 +369,7 @@ public final class SmallWikiScreen extends Screen {
 			return y;
 		}
 
-		guiGraphics.drawString(this.font, heading, x, y, 0xFFE082);
+		guiGraphics.drawString(this.font, heading, x, y, TEXT_WARNING);
 		y += 12;
 		for (String item : items) {
 			y = drawWrappedText(guiGraphics, Component.literal("• " + item), x, y, width, bodyColor);
