@@ -119,7 +119,11 @@ public final class SmallWikiScreen extends Screen {
 		}
 
 		if ((keyCode == 257 || keyCode == 335) && !currentResults.isEmpty()) {
-			selectedArticle = currentResults.getFirst();
+			int selectedIndex = indexOfSelectedArticle();
+			if (selectedIndex < 0) {
+				selectedIndex = 0;
+			}
+			selectedArticle = currentResults.get(selectedIndex);
 			articleScroll = 0;
 			return true;
 		}
@@ -302,6 +306,7 @@ public final class SmallWikiScreen extends Screen {
 	}
 
 	private int measureSection(Component body, int y, int width) {
+		y += 9;
 		y += 12;
 		y += this.font.wordWrapHeight(body, width);
 		return y + 4;
@@ -312,6 +317,7 @@ public final class SmallWikiScreen extends Screen {
 			return y;
 		}
 
+		y += 9;
 		y += 12;
 		for (String item : items) {
 			y += this.font.wordWrapHeight(Component.literal("• " + item), width);
