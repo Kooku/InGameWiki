@@ -2,7 +2,7 @@
 
 ## Summary
 
-`smallWiki` is a manual, in-game knowledge panel for vanilla Minecraft. It should answer common survival questions in seconds and work on Realms because it is fully client-side.
+`InGameWiki` is a manual, in-game knowledge panel for vanilla Minecraft. It should answer common survival questions in seconds and work on Realms because it is fully client-side.
 
 The first release should optimize for:
 
@@ -18,7 +18,7 @@ A vanilla or lightly-modded player who is on a Realm or server and does not want
 ## Core UX
 
 1. Player pauses the game.
-2. Player opens `smallWiki`.
+2. Player opens `InGameWiki`.
 3. Player searches a simple term such as `villager`, `mending`, `diamonds`, `slime`, or `netherite`.
 4. The mod shows a short answer immediately.
 5. The player can jump to related topics if needed.

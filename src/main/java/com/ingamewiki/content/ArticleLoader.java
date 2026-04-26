@@ -10,7 +10,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class ArticleLoader {
 	private static final Gson GSON = new Gson();
@@ -20,16 +22,37 @@ public final class ArticleLoader {
 	private ArticleLoader() {
 	}
 
-	public static List<Article> loadBundledArticles() {
-		ArticleIndex index = readResource(ARTICLE_INDEX_PATH, ArticleIndex.class);
+	public static LoadResult loadBundledArticles() {
+		ArticleIndex index;
+		try {
+			index = readResource(ARTICLE_INDEX_PATH, ArticleIndex.class);
+		} catch (IllegalStateException exception) {
+			InGameWikiMod.LOGGER.error("InGameWiki article index failed to load", exception);
+			return new LoadResult(
+				List.of(),
+				Map.of(),
+				"InGameWiki couldn't load its article index. Other gameplay should still work, but the wiki is temporarily unavailable."
+			);
+		}
+
 		List<Article> articles = new ArrayList<>();
+		Map<String, String> failures = new LinkedHashMap<>();
 
 		for (String articleId : index.articles()) {
 			String articlePath = ARTICLES_ROOT + articleId + ".json";
-			articles.add(readResource(articlePath, Article.class));
+			try {
+				Article article = readResource(articlePath, Article.class);
+				articles.add(article);
+			} catch (IllegalStateException exception) {
+				InGameWikiMod.LOGGER.error("InGameWiki article {} failed to load", articleId, exception);
+				failures.put(
+					articleId,
+					"Something went wrong while loading this page. Other InGameWiki pages should still work while the developer takes a look."
+				);
+			}
 		}
 
-		return List.copyOf(articles);
+		return new LoadResult(List.copyOf(articles), Map.copyOf(failures), null);
 	}
 
 	private static <T> T readResource(String path, Class<T> type) {
@@ -54,6 +77,21 @@ public final class ArticleLoader {
 	private record ArticleIndex(List<String> articles) {
 		private ArticleIndex {
 			articles = articles == null ? List.of() : List.copyOf(articles);
+		}
+	}
+
+	public record LoadResult(
+		List<Article> articles,
+		Map<String, String> failures,
+		String globalFailureMessage
+	) {
+		public LoadResult {
+			articles = articles == null ? List.of() : List.copyOf(articles);
+			failures = failures == null ? Map.of() : Map.copyOf(failures);
+		}
+
+		public boolean hasGlobalFailure() {
+			return globalFailureMessage != null && !globalFailureMessage.isBlank();
 		}
 	}
 }
