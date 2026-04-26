@@ -165,7 +165,7 @@ public final class SmallWikiScreen extends Screen {
 
 		super.render(guiGraphics, mouseX, mouseY, delta);
 
-		guiGraphics.drawCenteredString(this.font, this.title, this.width / 2, layout.panelTop + 4, TEXT_PRIMARY);
+		guiGraphics.drawString(this.font, this.title, layout.rightPanelX + INNER_PADDING, layout.panelTop + 8, TEXT_PRIMARY);
 		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.results"), layout.leftPanelX + INNER_PADDING, layout.resultsLabelY, TEXT_SECONDARY);
 
 		drawSelectedResultHighlight(guiGraphics);
