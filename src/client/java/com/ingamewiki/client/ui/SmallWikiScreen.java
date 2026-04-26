@@ -24,6 +24,7 @@ public final class SmallWikiScreen extends Screen {
 	private static final int SELECTED_RESULT_BACKGROUND = 0x80446A9F;
 	private static final int ARTICLE_SCROLL_STEP = 18;
 	private static final int LINK_HEIGHT = 12;
+	private static final int RESULT_SCROLL_STEP = 1;
 
 	private final Screen parent;
 	private final List<Button> resultButtons = new ArrayList<>();
@@ -34,6 +35,7 @@ public final class SmallWikiScreen extends Screen {
 	private Article selectedArticle;
 	private int articleScroll;
 	private int articleContentHeight;
+	private int resultScroll;
 
 	public SmallWikiScreen(Screen parent) {
 		super(Component.translatable("screen.ingamewiki.title"));
@@ -82,6 +84,12 @@ public final class SmallWikiScreen extends Screen {
 		}
 
 		Layout layout = layout();
+		if (layout.isInResultsArea(mouseX, mouseY)) {
+			resultScroll = clampResultScroll(resultScroll - (int) Math.round(verticalAmount * RESULT_SCROLL_STEP));
+			updateResultButtons();
+			return true;
+		}
+
 		if (layout.isInArticleArea(mouseX, mouseY)) {
 			articleScroll = clampArticleScroll(articleScroll - (int) Math.round(verticalAmount * ARTICLE_SCROLL_STEP), selectedArticle);
 			return true;
@@ -162,6 +170,12 @@ public final class SmallWikiScreen extends Screen {
 			articleToRender = InGameWikiClient.articleRepository().globalFailureArticle().orElse(null);
 		}
 
+		boolean hasQuery = searchField != null && !searchField.getValue().trim().isEmpty();
+		if (!hasQuery && articleToRender == null) {
+			drawHomeState(guiGraphics, layout);
+			return;
+		}
+
 		if (articleToRender == null) {
 			drawRightPanelEmptyState(guiGraphics, layout);
 			return;
@@ -185,7 +199,16 @@ public final class SmallWikiScreen extends Screen {
 
 	private void drawLeftPanelMessages(GuiGraphics guiGraphics, Layout layout) {
 		String query = searchField == null ? "" : searchField.getValue().trim();
-		if (!query.isEmpty() && currentResults.isEmpty()) {
+		if (query.isEmpty()) {
+			guiGraphics.drawWordWrap(
+				this.font,
+				Component.translatable("screen.ingamewiki.home_sidebar_hint", currentResults.size()),
+				layout.leftPanelX + INNER_PADDING,
+				layout.resultsBottom + 8,
+				layout.leftInnerWidth,
+				0xB8B8B8
+			);
+		} else if (currentResults.isEmpty()) {
 			guiGraphics.drawWordWrap(
 				this.font,
 				Component.translatable("screen.ingamewiki.no_results", query),
@@ -195,6 +218,42 @@ public final class SmallWikiScreen extends Screen {
 				0xD8D8D8
 			);
 		}
+
+		if (currentResults.size() > RESULT_BUTTON_COUNT) {
+			int shownEnd = Math.min(currentResults.size(), resultScroll + RESULT_BUTTON_COUNT);
+			guiGraphics.drawString(
+				this.font,
+				Component.translatable("screen.ingamewiki.results_count", resultScroll + 1, shownEnd, currentResults.size()),
+				layout.leftPanelX + INNER_PADDING,
+				layout.panelBottom - INNER_PADDING - 9,
+				0xA0A0A0
+			);
+		}
+	}
+
+	private void drawHomeState(GuiGraphics guiGraphics, Layout layout) {
+		int textX = layout.rightPanelX + INNER_PADDING;
+		int textY = layout.articleViewportTop;
+
+		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.home_title"), textX, textY, 0xFFFFFF);
+		textY += 18;
+
+		guiGraphics.drawWordWrap(
+			this.font,
+			Component.translatable("screen.ingamewiki.home_hint"),
+			textX,
+			textY,
+			layout.rightInnerWidth,
+			0xC8C8C8
+		);
+		textY += this.font.wordWrapHeight(Component.translatable("screen.ingamewiki.home_hint"), layout.rightInnerWidth) + 12;
+
+		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.home_examples_label"), textX, textY, 0xFFE082);
+		textY += 14;
+
+		textY = drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_1"), textX, textY, layout.rightInnerWidth, 0xFFFFFF);
+		textY = drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_2"), textX, textY, layout.rightInnerWidth, 0xFFFFFF);
+		drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_3"), textX, textY, layout.rightInnerWidth, 0xFFFFFF);
 	}
 
 	private void drawRightPanelEmptyState(GuiGraphics guiGraphics, Layout layout) {
@@ -211,12 +270,19 @@ public final class SmallWikiScreen extends Screen {
 	}
 
 	private void drawSelectedResultHighlight(GuiGraphics guiGraphics) {
-		if (selectedArticle == null) {
-			return;
+		if (selectedArticle == null || searchField == null || searchField.getValue().trim().isEmpty()) {
+			if (selectedArticle == null) {
+				return;
+			}
 		}
 
-		for (int index = 0; index < currentResults.size() && index < resultButtons.size(); index++) {
-			Article article = currentResults.get(index);
+		for (int index = 0; index < resultButtons.size(); index++) {
+			int articleIndex = resultScroll + index;
+			if (articleIndex >= currentResults.size()) {
+				break;
+			}
+
+			Article article = currentResults.get(articleIndex);
 			if (!article.id().equals(selectedArticle.id())) {
 				continue;
 			}
@@ -331,23 +397,19 @@ public final class SmallWikiScreen extends Screen {
 	}
 
 	private void refreshSearch(String query, boolean autoSelectTopResult) {
-		currentResults = InGameWikiClient.searchService().search(query, RESULT_BUTTON_COUNT);
+		boolean hasQuery = query != null && !query.trim().isEmpty();
+		currentResults = hasQuery
+			? InGameWikiClient.searchService().search(query, Integer.MAX_VALUE)
+			: List.copyOf(InGameWikiClient.articleRepository().all());
+		resultScroll = 0;
+		updateResultButtons();
 
-		for (int index = 0; index < resultButtons.size(); index++) {
-			Button button = resultButtons.get(index);
-			if (index < currentResults.size()) {
-				Article article = currentResults.get(index);
-				button.visible = true;
-				button.active = true;
-				button.setMessage(Component.literal(article.title()));
-			} else {
-				button.visible = false;
-				button.active = false;
-				button.setMessage(Component.empty());
+		if (!hasQuery) {
+			if (selectedArticle != null && currentResults.stream().noneMatch(article -> article.id().equals(selectedArticle.id()))) {
+				selectedArticle = null;
+				articleScroll = 0;
 			}
-		}
-
-		if (autoSelectTopResult) {
+		} else if (autoSelectTopResult) {
 			selectedArticle = currentResults.isEmpty() ? null : currentResults.getFirst();
 			articleScroll = 0;
 		} else if (selectedArticle != null && currentResults.stream().noneMatch(article -> article.id().equals(selectedArticle.id()))) {
@@ -357,8 +419,9 @@ public final class SmallWikiScreen extends Screen {
 	}
 
 	private void selectResult(int resultIndex) {
-		if (resultIndex >= 0 && resultIndex < currentResults.size()) {
-			selectedArticle = currentResults.get(resultIndex);
+		int actualIndex = resultScroll + resultIndex;
+		if (actualIndex >= 0 && actualIndex < currentResults.size()) {
+			selectedArticle = currentResults.get(actualIndex);
 			articleScroll = 0;
 		}
 	}
@@ -376,6 +439,8 @@ public final class SmallWikiScreen extends Screen {
 		int nextIndex = Math.max(0, Math.min(currentResults.size() - 1, currentIndex + delta));
 		selectedArticle = currentResults.get(nextIndex);
 		articleScroll = 0;
+		ensureSelectedResultVisible(nextIndex);
+		updateResultButtons();
 	}
 
 	private int indexOfSelectedArticle() {
@@ -419,6 +484,41 @@ public final class SmallWikiScreen extends Screen {
 		return Math.max(0, articleContentHeight - viewportHeight);
 	}
 
+	private void updateResultButtons() {
+		for (int index = 0; index < resultButtons.size(); index++) {
+			Button button = resultButtons.get(index);
+			int articleIndex = resultScroll + index;
+			if (articleIndex < currentResults.size()) {
+				Article article = currentResults.get(articleIndex);
+				button.visible = true;
+				button.active = true;
+				button.setMessage(Component.literal(article.title()));
+			} else {
+				button.visible = false;
+				button.active = false;
+				button.setMessage(Component.empty());
+			}
+		}
+	}
+
+	private int clampResultScroll(int proposedScroll) {
+		return Math.max(0, Math.min(proposedScroll, maxResultScroll()));
+	}
+
+	private int maxResultScroll() {
+		return Math.max(0, currentResults.size() - RESULT_BUTTON_COUNT);
+	}
+
+	private void ensureSelectedResultVisible(int selectedIndex) {
+		if (selectedIndex < resultScroll) {
+			resultScroll = selectedIndex;
+		} else if (selectedIndex >= resultScroll + RESULT_BUTTON_COUNT) {
+			resultScroll = selectedIndex - RESULT_BUTTON_COUNT + 1;
+		}
+
+		resultScroll = clampResultScroll(resultScroll);
+	}
+
 	private boolean isLinkHovered(int mouseX, int mouseY, int x, int y, int width) {
 		return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + LINK_HEIGHT;
 	}
@@ -435,6 +535,7 @@ public final class SmallWikiScreen extends Screen {
 		int rightInnerWidth = rightPanelWidth - (INNER_PADDING * 2);
 		int resultsLabelY = panelTop + 52;
 		int resultsTop = resultsLabelY + 14;
+		int resultsBottom = resultsTop + (RESULT_BUTTON_COUNT * 24);
 		int articleViewportTop = panelTop + 32;
 		int articleViewportBottom = panelBottom - INNER_PADDING;
 
@@ -451,6 +552,7 @@ public final class SmallWikiScreen extends Screen {
 			rightInnerWidth,
 			resultsLabelY,
 			resultsTop,
+			resultsBottom,
 			articleViewportTop,
 			articleViewportBottom
 		);
@@ -469,9 +571,14 @@ public final class SmallWikiScreen extends Screen {
 		int rightInnerWidth,
 		int resultsLabelY,
 		int resultsTop,
+		int resultsBottom,
 		int articleViewportTop,
 		int articleViewportBottom
 	) {
+		private boolean isInResultsArea(double mouseX, double mouseY) {
+			return mouseX >= leftPanelX && mouseX <= leftPanelRight && mouseY >= resultsTop && mouseY <= resultsBottom;
+		}
+
 		private boolean isInArticleArea(double mouseX, double mouseY) {
 			return mouseX >= rightPanelX && mouseX <= rightPanelRight && mouseY >= articleViewportTop && mouseY <= articleViewportBottom;
 		}
