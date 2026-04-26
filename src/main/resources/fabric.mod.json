@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "ingamewiki",
+	"version": "${version}",
+	"name": "InGameWiki",
+	"description": "A client-side in-game vanilla reference mod for fast lookup on Realms and servers.",
+	"authors": [
+		"Kooku"
+	],
+	"contact": {
+		"sources": "https://github.com/Kooku/InGameWiki"
+	},
+	"license": "MIT",
+	"icon": "assets/ingamewiki/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			"com.ingamewiki.InGameWikiMod"
+		],
+		"client": [
+			"com.ingamewiki.client.InGameWikiClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

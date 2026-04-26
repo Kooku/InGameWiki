@@ -1,0 +1,25 @@
+{
+	"id": "villager-restocking",
+	"title": "Restocking",
+	"aliases": [
+		"villager restock",
+		"villagers restock",
+		"how villagers restock",
+		"restocking"
+	],
+	"category": "villagers",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Villagers can restock up to twice per day if they can reach and work at their linked workstation during the work part of the day.",
+	"keyFacts": [
+		"A villager needs a valid profession and matching workstation.",
+		"Trading with a villager does not prevent later restocks.",
+		"Pathing and workstation access matter more than the exact room layout."
+	],
+	"commonMistakes": [
+		"Blocking the villager from reaching its workstation.",
+		"Expecting a nitwit or unemployed villager to restock trades."
+	],
+	"relatedTopics": [
+		"librarian-mending"
+	]
+}

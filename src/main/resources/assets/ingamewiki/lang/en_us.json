@@ -1,0 +1,14 @@
+{
+	"gui.back": "Back",
+	"menu.ingamewiki.open": "smallWiki",
+	"screen.ingamewiki.title": "smallWiki",
+	"screen.ingamewiki.results": "Results",
+	"screen.ingamewiki.search": "Search",
+	"screen.ingamewiki.search_placeholder": "Search villagers, diamonds, slime...",
+	"screen.ingamewiki.no_selection": "No article selected",
+	"screen.ingamewiki.no_selection_hint": "Try a common survival term in the search box.",
+	"screen.ingamewiki.section.quick_answer": "Quick Answer",
+	"screen.ingamewiki.section.key_facts": "Key Facts",
+	"screen.ingamewiki.section.common_mistakes": "Common Mistakes",
+	"screen.ingamewiki.section.related_topics": "Related Topics"
+}

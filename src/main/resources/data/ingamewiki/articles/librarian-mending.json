@@ -1,0 +1,25 @@
+{
+	"id": "librarian-mending",
+	"title": "Librarian and Mending",
+	"aliases": [
+		"mending villager",
+		"which villager sells mending",
+		"librarian mending",
+		"mending"
+	],
+	"category": "villagers",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "A librarian can offer Mending as an enchanted book trade. Place and break the lectern before the villager is locked in by trading until you get the book you want.",
+	"keyFacts": [
+		"Only unemployed villagers can change profession when linked to a workstation.",
+		"After you trade once, the villager's profession and trade pool are locked.",
+		"Librarians use lecterns as their workstation."
+	],
+	"commonMistakes": [
+		"Trading too early and locking a bad trade set.",
+		"Trying to reroll a villager that already has experience from trading."
+	],
+	"relatedTopics": [
+		"villager-restocking"
+	]
+}
