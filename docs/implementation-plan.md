@@ -2,7 +2,7 @@
 
 ## Goal
 
-Build the first playable version of `InGameWiki` as a Fabric client-side mod for vanilla Minecraft players on Realms and servers.
+Build the first usable version of `InGameWiki` as a Fabric client-side mod for vanilla Minecraft players on Realms and servers.
 
 The first version should let a player:
 
@@ -13,7 +13,7 @@ The first version should let a player:
 
 ## Scope Boundary
 
-This plan is for the first playable prototype and MVP.
+This plan covers the first playable prototype and MVP.
 
 Included:
 
@@ -59,68 +59,89 @@ Excluded:
 
 ### Java Target
 
-- Use Java 21
-- Lock the exact toolchain version during scaffolding
+- Java 21
 
 ### Data Strategy
 
 - Ship curated article data inside the mod resources
 - Use JSON for article definitions
-- Build a lightweight in-memory search index at client startup for the MVP
+- Build a lightweight in-memory search view at client startup for the MVP
 - Revisit lazy loading only if startup or content scale becomes a real problem
 
 ### UI Strategy
 
 - Use vanilla screen widgets
 - Add one pause-menu button to open `InGameWiki`
-- Start with a two-pane layout:
+- Use a two-pane layout:
   - left: search box and results
-  - right: selected article
+  - right: home state or selected article
 
-## Proposed Project Structure
+## Current Project Structure
 
-This structure is intentionally simple and separates UI, content, and search.
+This reflects the code that exists today.
 
 ```text
-src/main/java/.../
+src/client/java/com/ingamewiki/client/
+  InGameWikiClient.java
+  PauseMenuIntegration.java
+  ui/
+    SmallWikiScreen.java
+
+src/main/java/com/ingamewiki/
   InGameWikiMod.java
-  client/
-    InGameWikiClient.java
-    ui/
-      SmallWikiScreen.java
-      PauseMenuMixin.java
-      widget/
-    content/
-      Article.java
-      ArticleSection.java
-      ArticleRepository.java
-      ArticleLoader.java
-    search/
-      SearchIndex.java
-      SearchQuery.java
-      SearchResult.java
-      SearchService.java
+  content/
+    Article.java
+    ArticleLoader.java
+    ArticleRepository.java
+  search/
+    SearchService.java
 
 src/main/resources/
   fabric.mod.json
-  ingamewiki.mixins.json
-  assets/ingamewiki/lang/en_us.json
-  data/ingamewiki/articles/*.json
+  assets/ingamewiki/
+    icon.png
+    lang/en_us.json
+  data/ingamewiki/articles/
+    index.json
+    *.json
 ```
 
-Use `com.ingamewiki` as the base package when scaffolding. The separation should remain.
+## Current Implementation Status
+
+Completed:
+
+- Fabric `1.21.10` scaffold
+- Java 21 build setup
+- client entrypoint and mod metadata
+- pause-menu `InGameWiki` button
+- `SmallWikiScreen` two-pane UI
+- bundled article loading at client startup
+- fail-open handling for broken individual articles
+- fail-close handling for global content load failure
+- alias-aware search
+- article rendering
+- related-topic navigation
+- empty-search home state
+
+Not yet implemented:
+
+- broader starter article set
+- stronger search coverage and ranking tuning
+- bookmarks
+- featured/common topics
+- contextual entry points such as hover hints or `Hold H`
 
 ## Content Model
 
-Each article should be a small, strongly typed unit rather than raw markdown.
+Each article is a small, strongly typed unit rather than raw markdown.
 
-Suggested fields:
+Current fields:
 
 - `id`
 - `title`
 - `aliases`
 - `category`
-- `version_range` or `version_note`
+- `version_note`
 - `quick_answer`
 - `key_facts`
 - `common_mistakes`
@@ -151,9 +172,9 @@ Example shape:
 
 ## Search Plan
 
-V1 search should be simple and deterministic.
+V1 search should stay simple and deterministic.
 
-### Ranking Inputs
+Ranking inputs:
 
 - exact title match
 - exact alias match
@@ -161,19 +182,19 @@ V1 search should be simple and deterministic.
 - token overlap with aliases
 - optional keyword overlap with article body fields
 
-### Search Rules
+Search rules:
 
 - normalize to lowercase
 - ignore punctuation
 - singular/plural tolerance where possible
-- return top result selected by default
+- return a useful top result for obvious player phrasing
 - keep ranking explainable and easy to tune
 
-### Non-Goals For Search
+Non-goals:
 
-- no fuzzy ML ranking
-- no embeddings
-- no external search library unless the vanilla implementation proves insufficient
+- fuzzy ML ranking
+- embeddings
+- external search libraries unless the current implementation proves insufficient
 
 ## UI Plan
 
@@ -181,15 +202,15 @@ V1 search should be simple and deterministic.
 
 - Add an `InGameWiki` button to the pause screen
 - Open the main screen without closing the current world/session
+- Preserve the expected location of `Save and Quit to Title`
 
 ### Main Screen
 
-The initial layout should support fast lookup, not browsing depth.
-
-Required elements:
+Current elements:
 
 - search text box
 - result list
+- home state when no search is active
 - article title
 - version label if applicable
 - `Quick Answer`
@@ -197,144 +218,150 @@ Required elements:
 - `Common Mistakes`
 - `Related Topics`
 
-Optional later polish:
+Later polish candidates:
 
-- category chips
-- recent searches
-- keyboard shortcuts
+- bookmarks
+- featured/common topics
+- keyboard shortcut hints
 
-### Empty States
+### Empty and Failure States
 
-Define these before implementation so the UX does not stall:
+The current UX should explicitly support:
 
 - no query entered
 - no results found
-- content load failure
+- broken individual article
+- global content load failure
 - article selected but missing related topic
 
 ## Phased Delivery
 
 ### Phase 1: Fabric Foundation
 
-Deliverables:
+Status: completed
+
+Delivered:
 
 - Gradle and Fabric project setup
 - client entrypoint
 - mod metadata
-- run configuration works locally
-
-Acceptance criteria:
-
-- the mod launches in a development client
-- the mod is visible in the loaded mod list
+- working local run/build flow
 
 ### Phase 2: Pause Menu Integration
 
-Deliverables:
+Status: completed
+
+Delivered:
 
 - pause menu button
 - screen open/close wiring
-
-Acceptance criteria:
-
-- player can open and close `InGameWiki` from an active world
-- pause menu layout is not broken at common resolutions
+- placement that preserves the bottom-most exit action
 
 ### Phase 3: Screen Skeleton
 
-Deliverables:
+Status: completed
+
+Delivered:
 
 - `SmallWikiScreen`
 - search input
-- placeholder result list
-- placeholder article panel
+- result list
+- article panel
 
-Acceptance criteria:
+### Phase 4: Content Loading and Failure Handling
 
-- the screen renders reliably
-- keyboard and mouse navigation work
-- placeholder data can be selected and displayed
+Status: completed
 
-### Phase 4: Content Loading
-
-Deliverables:
+Delivered:
 
 - JSON article schema
 - resource loader
 - repository cache
-- error handling for malformed or missing content
-
-Acceptance criteria:
-
-- bundled article files load correctly
-- invalid files fail gracefully and are logged clearly
+- graceful handling for malformed or missing content
 
 ### Phase 5: Search
 
-Deliverables:
+Status: completed for MVP baseline
+
+Delivered:
 
 - query normalization
-- alias-aware ranking
-- sorted search results
+- alias-aware search
+- immediate in-memory result lookup
 
-Acceptance criteria:
+Follow-up work:
 
-- obvious queries resolve to the expected article
-- empty queries do not crash or stall the screen
-- search feels immediate with the starter dataset
+- improve alias coverage
+- tune ranking as the article set grows
 
-### Phase 6: Article Rendering
+### Phase 6: Article Rendering and Navigation
 
-Deliverables:
+Status: completed for MVP baseline
+
+Delivered:
 
 - article sections rendered from loaded data
 - related topic navigation
 - version note display
+- article scrolling
 
-Acceptance criteria:
+### Phase 7: First-Open UX
 
-- a player can read the full article without overlapping UI
-- related topics navigate correctly
+Status: completed for MVP baseline
 
-### Phase 7: Home Page UX
+Delivered:
 
-Deliverables:
+- home state when search is empty
+- default topic list before filtering
+- explicit unavailable state when the whole wiki fails to load
 
-- a dedicated `InGameWiki` landing view instead of dropping straight into article results
+Follow-up work:
+
+- bookmarks
 - featured/common topics
-- an intentional empty state when no search is active
 
-Acceptance criteria:
+### Phase 8: Starter Content Expansion
 
-- first open feels purposeful even before the player types
-- the screen has a clear "home" state separate from search results
-
-### Phase 8: Starter Content Pass
+Status: next major step
 
 Deliverables:
 
-- first curated article batch
+- first meaningful curated article batch
 - alias coverage for common phrasings
-- review for brevity and consistency
+- consistency review for brevity and style
 
 Acceptance criteria:
 
-- at least 20 high-value articles exist
+- enough topics exist that the home/result list feels useful
 - core queries like `villager`, `mending`, `diamond y level`, and `slime` return useful results
+
+### Phase 9: Search Quality Pass
+
+Status: pending
+
+Deliverables:
+
+- improved ranking heuristics
+- expanded aliases
+- regression checks for obvious player phrasing
+
+Acceptance criteria:
+
+- common survival queries reliably open the intended article first
+- additional content does not noticeably degrade search responsiveness
 
 ## Agent-Friendly Work Split
 
-This is the intended parallelization boundary once implementation starts.
+This is the intended parallelization boundary for future work.
 
-### Workstream A: Fabric and UI Shell
+### Workstream A: Screen and UX
 
 Owns:
 
-- Gradle setup
-- Fabric bootstrap
-- mixins
-- pause menu button
+- `PauseMenuIntegration`
 - `SmallWikiScreen`
+- layout and interaction polish
+- bookmarks and home-state UX
 
 Should not own:
 
@@ -345,15 +372,16 @@ Should not own:
 
 Owns:
 
-- article schema
-- JSON loading
-- repository/cache
-- search index and ranking
+- `ArticleLoader`
+- `ArticleRepository`
+- `SearchService`
+- search ranking behavior
+- content load failure semantics
 
 Should not own:
 
-- pause menu integration
-- widget layout styling
+- pause menu layout changes
+- large article-writing batches
 
 ### Workstream C: Starter Content
 
@@ -366,16 +394,16 @@ Owns:
 Should not own:
 
 - renderer logic
-- low-level search implementation
+- search implementation details
 
 ## Resolved Decisions
 
 - Minecraft target: `1.21.10`
 - Base package: `com.ingamewiki`
 - Mod ID: `ingamewiki`
+- Java target: `21`
 - Article loading for MVP: eager load at client startup
 - Lazy content loading: deferred unless performance justifies it later
-- Java target: `21`
 - Pause-menu entrypoint: Fabric screen events, not mixins
 
 ## Risks
@@ -408,7 +436,7 @@ Risk:
 
 Mitigation:
 
-- use vanilla widgets first and defer custom visual polish
+- keep the current vanilla-widget foundation and add UX layers incrementally
 
 ### Content Maintenance
 
@@ -418,19 +446,4 @@ Risk:
 
 Mitigation:
 
-- keep the initial set small and high-value
-
-## Definition of Done for MVP
-
-The MVP is done when all of the following are true:
-
-- A player can open `InGameWiki` from the pause menu in a Fabric client.
-- The mod ships with a local article set.
-- Search works for common plain-language queries.
-- Articles render entirely in-game with no browser handoff.
-- The initial content set covers the most common vanilla survival lookups.
-- The experience is stable in normal play on a Realm or server because the mod remains fully client-side.
-
-## Supporting Spec
-
-See [docs/build-spec.md](/Users/kuyoungshin/Coding/InGameWiki/docs/build-spec.md) for the locked setup choices that should guide scaffolding.
+- keep article structure fixed and review additions in small batches

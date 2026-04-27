@@ -30,9 +30,9 @@ Version 1 is intentionally narrow:
 - No passive triggers
 - No browser redirect
 
-See [docs/mvp.md](/Users/kuyoungshin/Coding/InGameWiki/docs/mvp.md) for the working MVP spec.
-See [docs/implementation-plan.md](/Users/kuyoungshin/Coding/InGameWiki/docs/implementation-plan.md) for the implementation phases, architecture, and handoff plan.
-See [docs/build-spec.md](/Users/kuyoungshin/Coding/InGameWiki/docs/build-spec.md) for the locked technical setup choices for the first prototype.
+See [docs/mvp.md](docs/mvp.md) for the working MVP spec.
+See [docs/implementation-plan.md](docs/implementation-plan.md) for the implementation phases, current architecture, and handoff plan.
+See [docs/build-spec.md](docs/build-spec.md) for the locked technical setup choices for the first prototype.
 
 ## Non-Goals
 
@@ -48,8 +48,9 @@ The repository now contains a working Fabric scaffold for `1.21.10`:
 
 - Java 21 build setup
 - pause-menu `InGameWiki` entry point
-- starter in-game screen
+- two-pane in-game screen with an empty-search home state
 - bundled article JSON loading
 - basic alias-aware search
+- failure handling for broken or missing wiki content
 
-The next implementation step is refining the UI and expanding the article set.
+The next implementation steps are expanding the article set and improving search coverage.
