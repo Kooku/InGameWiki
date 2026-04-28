@@ -7,6 +7,12 @@
 		"how villagers restock",
 		"restocking"
 	],
+	"keywords": [
+		"workstation access",
+		"trading hall",
+		"profession block",
+		"twice per day"
+	],
 	"category": "villagers",
 	"versionNote": "Java Edition 1.21.10",
 	"quickAnswer": "Villagers can restock up to twice per day if they can reach and work at their linked workstation during the work part of the day.",

@@ -1,6 +1,7 @@
 package com.ingamewiki.client;
 
 import com.ingamewiki.client.ui.SmallWikiScreen;
+import com.ingamewiki.content.ContentPack;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.fabricmc.fabric.api.client.screen.v1.Screens;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -26,6 +27,7 @@ public final class PauseMenuIntegration {
 				return;
 			}
 
+			ContentPack contentPack = InGameWikiClient.articleRepository().contentPack();
 			List<AbstractWidget> existingButtons = Screens.getButtons(screen);
 			int buttonWidth = 204;
 			int buttonX = (scaledWidth - buttonWidth) / 2;
@@ -44,7 +46,7 @@ public final class PauseMenuIntegration {
 			}
 
 			existingButtons.add(
-				Button.builder(Component.translatable("menu.ingamewiki.open"), button -> client.setScreen(new SmallWikiScreen(screen)))
+				Button.builder(Component.literal(contentPack.displayName()), button -> client.setScreen(new SmallWikiScreen(screen)))
 					.bounds(buttonX, buttonY, buttonWidth, 20)
 					.build()
 			);

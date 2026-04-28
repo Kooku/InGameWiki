@@ -7,6 +7,12 @@
 		"slime chunk",
 		"how to find slimes"
 	],
+	"keywords": [
+		"seed based spawning",
+		"swamp slimes",
+		"mob cap",
+		"below y 40"
+	],
 	"category": "mob-spawning",
 	"versionNote": "Java Edition 1.21.10",
 	"quickAnswer": "In most worlds, slimes can spawn in specific slime chunks below Y 40, even without a swamp biome. Light level does not block those chunk spawns the way it does for many hostile mobs.",

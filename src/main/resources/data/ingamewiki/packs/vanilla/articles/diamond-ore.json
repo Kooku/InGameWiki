@@ -7,6 +7,12 @@
 		"where to mine diamonds",
 		"diamond mining"
 	],
+	"keywords": [
+		"ore distribution",
+		"strip mining",
+		"deepslate",
+		"y level"
+	],
 	"category": "mining",
 	"versionNote": "Java Edition 1.21.10",
 	"quickAnswer": "In modern overworld generation, diamonds are most common deep underground. Many players mine around Y -53 to -59 while avoiding too much lava exposure.",

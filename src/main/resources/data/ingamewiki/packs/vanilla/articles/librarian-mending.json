@@ -7,6 +7,12 @@
 		"librarian mending",
 		"mending"
 	],
+	"keywords": [
+		"enchanted book",
+		"lectern",
+		"reroll trades",
+		"villager trading"
+	],
 	"category": "villagers",
 	"versionNote": "Java Edition 1.21.10",
 	"quickAnswer": "A librarian can offer Mending as an enchanted book trade. Place and break the lectern before the villager is locked in by trading until you get the book you want.",

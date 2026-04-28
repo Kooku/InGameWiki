@@ -3,7 +3,7 @@
 	"id": "ingamewiki",
 	"version": "${version}",
 	"name": "InGameWiki",
-	"description": "A client-side in-game vanilla reference mod for fast lookup on Realms and servers.",
+	"description": "A client-side in-game reference mod for fast lookup on Realms and servers.",
 	"authors": [
 		"Kooku"
 	],
