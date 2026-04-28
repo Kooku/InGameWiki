@@ -1,0 +1,19 @@
+{
+	"packId": "vanilla",
+	"displayName": "InGameWiki",
+	"subtitle": "Vanilla Survival Guide",
+	"targetName": "Minecraft Vanilla",
+	"articlesIndexPath": "data/ingamewiki/packs/vanilla/articles/index.json",
+	"home": {
+		"title": "Welcome to InGameWiki",
+		"hint": "Search for a vanilla topic to get a fast in-game answer without leaving your world.",
+		"sidebarHint": "Start typing to search topics like villagers, diamonds, slime, or mending.",
+		"noSelectionHint": "Try a common vanilla term in the search box.",
+		"searchPlaceholder": "Search villagers, diamonds, slime...",
+		"examples": [
+			"villager restocking",
+			"diamond y level",
+			"librarian mending"
+		]
+	}
+}

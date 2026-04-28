@@ -10,14 +10,17 @@ import java.util.Optional;
 public final class ArticleRepository {
 	private final Map<String, Article> articlesById = new LinkedHashMap<>();
 	private final Map<String, String> failedArticleMessages = new LinkedHashMap<>();
+	private ContentPack contentPack = ContentPack.FALLBACK;
 	private String globalFailureMessage;
 
 	public void loadBundled() {
 		articlesById.clear();
 		failedArticleMessages.clear();
+		contentPack = ContentPack.FALLBACK;
 		globalFailureMessage = null;
 
-		ArticleLoader.LoadResult loadResult = ArticleLoader.loadBundledArticles();
+		ContentPackLoader.LoadResult loadResult = ContentPackLoader.loadBundledPack();
+		contentPack = loadResult.contentPack();
 		globalFailureMessage = loadResult.globalFailureMessage();
 		failedArticleMessages.putAll(loadResult.failures());
 
@@ -30,6 +33,10 @@ public final class ArticleRepository {
 		return articlesById.values().stream()
 			.sorted(Comparator.comparing(Article::title, String.CASE_INSENSITIVE_ORDER))
 			.toList();
+	}
+
+	public ContentPack contentPack() {
+		return contentPack;
 	}
 
 	public Optional<Article> findById(String articleId) {

@@ -2,7 +2,7 @@
 
 ## Goal
 
-Build the first usable version of `InGameWiki` as a Fabric client-side mod for vanilla Minecraft players on Realms and servers.
+Build the first usable version of `InGameWiki` as a Fabric client-side mod and reusable wiki engine for Minecraft players on Realms and servers.
 
 The first version should let a player:
 
@@ -20,10 +20,10 @@ Included:
 - Fabric project setup
 - pause-menu entry point
 - `InGameWiki` screen
-- local article data
+- local content-pack and article data
 - manual search
 - article rendering
-- starter content set
+- starter vanilla content set
 
 Excluded:
 
@@ -32,7 +32,7 @@ Excluded:
 - browser handoff
 - remote data fetching
 - server-side features
-- modded content coverage
+- multi-pack runtime switching
 
 ## Implementation Principles
 
@@ -63,8 +63,10 @@ Excluded:
 
 ### Data Strategy
 
-- Ship curated article data inside the mod resources
+- Ship curated content packs inside the mod resources
+- Treat the current vanilla pack as the reference implementation for future forks
 - Use JSON for article definitions
+- Use a pack manifest so UI copy, examples, and article roots are pack-owned data
 - Build a lightweight in-memory search view at client startup for the MVP
 - Revisit lazy loading only if startup or content scale becomes a real problem
 
@@ -91,7 +93,8 @@ src/main/java/com/ingamewiki/
   InGameWikiMod.java
   content/
     Article.java
-    ArticleLoader.java
+    ContentPack.java
+    ContentPackLoader.java
     ArticleRepository.java
   search/
     SearchService.java
@@ -101,9 +104,12 @@ src/main/resources/
   assets/ingamewiki/
     icon.png
     lang/en_us.json
-  data/ingamewiki/articles/
-    index.json
-    *.json
+  data/ingamewiki/
+    pack.json
+    packs/vanilla/
+      articles/
+        index.json
+        *.json
 ```
 
 ## Current Implementation Status
@@ -115,7 +121,7 @@ Completed:
 - client entrypoint and mod metadata
 - pause-menu `InGameWiki` button
 - `SmallWikiScreen` two-pane UI
-- bundled article loading at client startup
+- bundled content-pack loading at client startup
 - fail-open handling for broken individual articles
 - fail-close handling for global content load failure
 - alias-aware search
@@ -140,6 +146,7 @@ Current fields:
 - `id`
 - `title`
 - `aliases`
+- `keywords`
 - `category`
 - `version_note`
 - `quick_answer`
@@ -154,6 +161,7 @@ Example shape:
   "id": "villager-restocking",
   "title": "Restocking",
   "aliases": ["villager restock", "villagers restock", "how villagers restock"],
+  "keywords": ["trading hall", "profession block", "workstation access"],
   "category": "villagers",
   "version_note": "Java Edition 1.21.x",
   "quick_answer": "Villagers can restock up to twice per day if they can reach their workstation.",
@@ -170,6 +178,8 @@ Example shape:
 }
 ```
 
+Pack-owned metadata now lives in `data/ingamewiki/pack.json`. That manifest controls the pack identity, home-state copy, search placeholder text, and the article index root.
+
 ## Search Plan
 
 V1 search should stay simple and deterministic.
@@ -178,6 +188,7 @@ Ranking inputs:
 
 - exact title match
 - exact alias match
+- keyword overlap
 - token overlap with title
 - token overlap with aliases
 - optional keyword overlap with article body fields
@@ -372,7 +383,7 @@ Should not own:
 
 Owns:
 
-- `ArticleLoader`
+- `ContentPackLoader`
 - `ArticleRepository`
 - `SearchService`
 - search ranking behavior

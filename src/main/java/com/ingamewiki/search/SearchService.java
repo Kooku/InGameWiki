@@ -68,6 +68,9 @@ public final class SearchService {
 		for (String alias : article.aliases()) {
 			score += tokenScore(normalize(alias), queryTokens, 45);
 		}
+		for (String keyword : article.keywords()) {
+			score += tokenScore(normalize(keyword), queryTokens, 30);
+		}
 
 		score += tokenScore(normalize(article.quickAnswer()), queryTokens, 12);
 		return score;

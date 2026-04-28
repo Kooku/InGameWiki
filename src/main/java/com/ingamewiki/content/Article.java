@@ -6,6 +6,7 @@ public record Article(
 	String id,
 	String title,
 	List<String> aliases,
+	List<String> keywords,
 	String category,
 	String versionNote,
 	String quickAnswer,
@@ -15,6 +16,7 @@ public record Article(
 ) {
 	public Article {
 		aliases = aliases == null ? List.of() : List.copyOf(aliases);
+		keywords = keywords == null ? List.of() : List.copyOf(keywords);
 		keyFacts = keyFacts == null ? List.of() : List.copyOf(keyFacts);
 		commonMistakes = commonMistakes == null ? List.of() : List.copyOf(commonMistakes);
 		relatedTopics = relatedTopics == null ? List.of() : List.copyOf(relatedTopics);
@@ -24,6 +26,7 @@ public record Article(
 		return new Article(
 			articleId,
 			title,
+			List.of(),
 			List.of(),
 			"system",
 			"",

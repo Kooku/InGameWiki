@@ -2,6 +2,7 @@ package com.ingamewiki.client.ui;
 
 import com.ingamewiki.client.InGameWikiClient;
 import com.ingamewiki.content.Article;
+import com.ingamewiki.content.ContentPack;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
@@ -44,17 +45,18 @@ public final class SmallWikiScreen extends Screen {
 	private int resultScroll;
 
 	public SmallWikiScreen(Screen parent) {
-		super(Component.translatable("screen.ingamewiki.title"));
+		super(Component.literal(InGameWikiClient.articleRepository().contentPack().displayName()));
 		this.parent = parent;
 	}
 
 	@Override
 	protected void init() {
 		Layout layout = layout();
+		ContentPack contentPack = InGameWikiClient.articleRepository().contentPack();
 
 		searchField = new EditBox(this.font, layout.leftPanelX + INNER_PADDING, layout.panelTop + INNER_PADDING, layout.leftInnerWidth, 20, Component.translatable("screen.ingamewiki.search"));
 		searchField.setMaxLength(100);
-		searchField.setHint(Component.translatable("screen.ingamewiki.search_placeholder"));
+		searchField.setHint(Component.literal(contentPack.searchPlaceholder()));
 		searchField.setResponder(query -> refreshSearch(query, true));
 		addRenderableWidget(searchField);
 		setInitialFocus(searchField);
@@ -204,11 +206,12 @@ public final class SmallWikiScreen extends Screen {
 	}
 
 	private void drawLeftPanelMessages(GuiGraphics guiGraphics, Layout layout) {
+		ContentPack contentPack = InGameWikiClient.articleRepository().contentPack();
 		String query = searchField == null ? "" : searchField.getValue().trim();
 		if (query.isEmpty()) {
 			guiGraphics.drawWordWrap(
 				this.font,
-				Component.translatable("screen.ingamewiki.home_sidebar_hint", currentResults.size()),
+				Component.literal(contentPack.homeSidebarHint()),
 				layout.leftPanelX + INNER_PADDING,
 				layout.resultsBottom + 8,
 				layout.leftInnerWidth,
@@ -238,36 +241,40 @@ public final class SmallWikiScreen extends Screen {
 	}
 
 	private void drawHomeState(GuiGraphics guiGraphics, Layout layout) {
+		ContentPack contentPack = InGameWikiClient.articleRepository().contentPack();
 		int textX = layout.rightPanelX + INNER_PADDING;
 		int textY = layout.articleViewportTop;
 
-		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.home_title"), textX, textY, TEXT_PRIMARY);
+		guiGraphics.drawString(this.font, Component.literal(contentPack.homeTitle()), textX, textY, TEXT_PRIMARY);
 		textY += 18;
 
 		guiGraphics.drawWordWrap(
 			this.font,
-			Component.translatable("screen.ingamewiki.home_hint"),
+			Component.literal(contentPack.homeHint()),
 			textX,
 			textY,
 			layout.rightInnerWidth,
 			TEXT_SECONDARY
 		);
-		textY += this.font.wordWrapHeight(Component.translatable("screen.ingamewiki.home_hint"), layout.rightInnerWidth) + 12;
+		textY += this.font.wordWrapHeight(Component.literal(contentPack.homeHint()), layout.rightInnerWidth) + 12;
 
-		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.home_examples_label"), textX, textY, TEXT_WARNING);
-		textY += 14;
+		if (!contentPack.homeExamples().isEmpty()) {
+			guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.home_examples_label"), textX, textY, TEXT_WARNING);
+			textY += 14;
 
-		textY = drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_1"), textX, textY, layout.rightInnerWidth, TEXT_PRIMARY);
-		textY = drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_2"), textX, textY, layout.rightInnerWidth, TEXT_PRIMARY);
-		drawWrappedText(guiGraphics, Component.translatable("screen.ingamewiki.home_example_3"), textX, textY, layout.rightInnerWidth, TEXT_PRIMARY);
+			for (String example : contentPack.homeExamples()) {
+				textY = drawWrappedText(guiGraphics, Component.literal("\u2022 " + example), textX, textY, layout.rightInnerWidth, TEXT_PRIMARY);
+			}
+		}
 	}
 
 	private void drawRightPanelEmptyState(GuiGraphics guiGraphics, Layout layout) {
+		ContentPack contentPack = InGameWikiClient.articleRepository().contentPack();
 		int textX = layout.rightPanelX + INNER_PADDING;
 		guiGraphics.drawString(this.font, Component.translatable("screen.ingamewiki.no_selection"), textX, layout.articleViewportTop, TEXT_PRIMARY);
 		guiGraphics.drawWordWrap(
 			this.font,
-			Component.translatable("screen.ingamewiki.no_selection_hint"),
+			Component.literal(contentPack.noSelectionHint()),
 			textX,
 			layout.articleViewportTop + 16,
 			layout.rightInnerWidth,
