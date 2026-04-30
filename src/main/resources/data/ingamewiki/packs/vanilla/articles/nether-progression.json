@@ -1,0 +1,33 @@
+{
+	"id": "nether-progression",
+	"title": "Nether Progression Basics",
+	"aliases": [
+		"nether progression",
+		"blaze rods to brewing",
+		"nether wart locations",
+		"piglin bartering loot"
+	],
+	"keywords": [
+		"fortress",
+		"bastion",
+		"bartering",
+		"eyes of ender"
+	],
+	"category": "dimensions",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "The nether progression path is usually: find a fortress for blaze rods and nether wart, optionally use bastions or bartering for valuable side loot, then turn rods into brewing and Eyes of Ender progress.",
+	"keyFacts": [
+		"Blaze rods become blaze powder for brewing fuel and Eyes of Ender.",
+		"Fortresses are for rods and wart; bastions are for richer loot and piglin-heavy danger.",
+		"Piglin bartering can provide useful items like obsidian, quartz, pearls, and fire resistance support, but it does not replace fortress access."
+	],
+	"commonMistakes": [
+		"Confusing bastions with fortresses and delaying blaze rod progress.",
+		"Entering the nether without gold, fire protection planning, or a clear route back to the portal."
+	],
+	"relatedTopics": [
+		"nether-fortress-loot",
+		"bastion-loot",
+		"potion-brewing-basics"
+	]
+}

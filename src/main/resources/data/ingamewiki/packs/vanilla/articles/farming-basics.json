@@ -1,0 +1,33 @@
+{
+	"id": "farming-basics",
+	"title": "Farming Basics",
+	"aliases": [
+		"farming",
+		"crop growth basics",
+		"animal breeding food",
+		"tree growth requirements"
+	],
+	"keywords": [
+		"light level",
+		"water",
+		"breeding",
+		"villager crops"
+	],
+	"category": "farming",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Basic farms work best when you respect growth requirements: hydrated farmland for crops, proper spacing and light, valid breeding food for animals, and enough room overhead for tree growth.",
+	"keyFacts": [
+		"Most crop farms need light and nearby water, while automated growth often depends on villager harvesting or redstone collection.",
+		"Animal breeding uses species-specific foods, so wheat, carrots, potatoes, seeds, and hay each matter for different mobs.",
+		"Simple starter farms usually beat complicated automation until you have stable iron, redstone, and villager support."
+	],
+	"commonMistakes": [
+		"Building compact farms that block light or tree growth space.",
+		"Trying to automate too early when a manual renewable farm would solve the immediate resource problem."
+	],
+	"relatedTopics": [
+		"best-early-villagers",
+		"renewable-villager-trades",
+		"redstone-basics"
+	]
+}

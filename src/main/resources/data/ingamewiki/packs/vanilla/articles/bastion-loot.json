@@ -1,0 +1,33 @@
+{
+	"id": "bastion-loot",
+	"title": "Bastion Loot",
+	"aliases": [
+		"bastion loot",
+		"bastion remnants loot",
+		"piglin loot structure",
+		"is bastion worth looting"
+	],
+	"keywords": [
+		"netherite upgrade",
+		"gold blocks",
+		"piglin brutes",
+		"lodestone"
+	],
+	"category": "dimensions",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Bastions are high-risk, high-reward. They can contain major nether progression loot, but piglin brutes make them one of the most dangerous structures to rush.",
+	"keyFacts": [
+		"Strong rewards can include gold blocks, enchanted gear, ancient debris-related supplies, and other rare nether items depending on bastion type.",
+		"Piglin brutes do not care whether you wear gold armor and hit very hard in close quarters.",
+		"Treasure bastions are especially valuable, but also some of the most punishing to loot carelessly."
+	],
+	"commonMistakes": [
+		"Assuming gold armor solves brute aggression.",
+		"Bridging into the center without a retreat path or fire resistance."
+	],
+	"relatedTopics": [
+		"nether-fortress-loot",
+		"nether-progression",
+		"structure-looting-priorities"
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "ancient-city-loot",
+	"title": "Ancient City Loot",
+	"aliases": [
+		"ancient city loot",
+		"warden city loot",
+		"deep dark city",
+		"is ancient city worth looting"
+	],
+	"keywords": [
+		"swift sneak",
+		"echo shards",
+		"silence armor trim",
+		"wardens"
+	],
+	"category": "structures",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Ancient cities have elite loot, but they are not efficient early-game targets. Go when you can handle stealth, escape tools, and the risk of triggering wardens.",
+	"keyFacts": [
+		"Notable loot includes Swift Sneak books, echo shards, enchanted gear, and rare trim or disc rewards.",
+		"The real danger is shrieker chains that escalate into warden spawns, not normal mob combat.",
+		"Wool, sneaking, and careful route planning are stronger than brute-force fighting here."
+	],
+	"commonMistakes": [
+		"Treating the area like a normal dungeon and making too much noise.",
+		"Going for loot before you have strong mobility or a safe exit route."
+	],
+	"relatedTopics": [
+		"structure-looting-priorities",
+		"desert-temple-loot",
+		"end-city-loot"
+	]
+}

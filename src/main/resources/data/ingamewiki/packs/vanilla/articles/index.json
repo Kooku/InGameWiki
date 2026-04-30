@@ -1,8 +1,30 @@
 {
 	"articles": [
-		"diamond-ore",
-		"librarian-mending",
+		"ancient-city-loot",
+		"bastion-loot",
+		"best-early-villagers",
+		"best-enchant-setups",
+		"desert-temple-loot",
+		"dungeon-chest-loot",
+		"elytra-basics",
+		"enchantment-basics",
+		"end-city-loot",
+		"farming-basics",
+		"fishing-loot",
+		"mineshaft-loot",
+		"mining-tips",
+		"mining-tool-requirements",
+		"mob-drops",
+		"nether-fortress-loot",
+		"nether-progression",
+		"ore-y-levels",
+		"potion-brewing-basics",
+		"redstone-basics",
+		"renewable-villager-trades",
 		"slime-chunks",
-		"villager-restocking"
+		"structure-looting-priorities",
+		"villager-professions",
+		"villager-restocking",
+		"villager-trade-levels"
 	]
 }

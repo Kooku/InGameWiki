@@ -1,0 +1,35 @@
+{
+	"id": "villager-professions",
+	"title": "Villager Professions and Job Blocks",
+	"aliases": [
+		"villager professions",
+		"job blocks",
+		"villager job block",
+		"which block gives villager job"
+	],
+	"keywords": [
+		"lectern",
+		"composter",
+		"blast furnace",
+		"smithing"
+	],
+	"category": "villagers",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Each working villager profession is tied to one job block. Link an unemployed villager to the right workstation before trading if you want to reroll its offers.",
+	"keyFacts": [
+		"Common pairings: librarian -> lectern, farmer -> composter, toolsmith -> smithing table, armorer -> blast furnace, cleric -> brewing stand.",
+		"Profession usually tells you the trade role: farmers buy crops, librarians sell books, clerics trade mob or nether materials, and smith villagers trade gear.",
+		"Only unemployed villagers can freely change profession after claiming a new workstation.",
+		"Nitwits do not take professions and cannot be used for normal trading setups."
+	],
+	"commonMistakes": [
+		"Trading once and then expecting the villager to keep changing profession.",
+		"Placing multiple nearby workstations and assuming the villager claimed the one you meant."
+	],
+	"relatedTopics": [
+		"villager-trade-levels",
+		"best-early-villagers",
+		"villager-restocking",
+		"renewable-villager-trades"
+	]
+}

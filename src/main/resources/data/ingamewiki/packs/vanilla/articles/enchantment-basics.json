@@ -1,0 +1,33 @@
+{
+	"id": "enchantment-basics",
+	"title": "Enchantment Basics",
+	"aliases": [
+		"enchantments",
+		"what does each enchantment do",
+		"max enchant level",
+		"enchantment guide"
+	],
+	"keywords": [
+		"anvil",
+		"enchanting table",
+		"silk touch",
+		"fortune"
+	],
+	"category": "enchantments",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Enchantments add special effects to tools, armor, and weapons. For practical play, focus first on utility staples like Unbreaking, Mending, Efficiency, Protection, and Sharpness or Power.",
+	"keyFacts": [
+		"Every enchantment has its own max level and valid item types, so not every book fits every item.",
+		"Important conflicts include Silk Touch vs Fortune and multiple damage enchant choices on the same weapon class.",
+		"Villager trading is the most reliable way to target specific top-tier books once you have a stable trading setup."
+	],
+	"commonMistakes": [
+		"Spending levels on random table rolls when you really need a targeted villager book.",
+		"Combining items inefficiently and hitting anvil cost limits earlier than necessary."
+	],
+	"relatedTopics": [
+		"best-enchant-setups",
+		"villager-professions",
+		"mob-drops"
+	]
+}

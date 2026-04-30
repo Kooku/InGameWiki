@@ -1,0 +1,33 @@
+{
+	"id": "mining-tool-requirements",
+	"title": "Mining Tool Requirements",
+	"aliases": [
+		"tool requirements",
+		"what pickaxe do i need",
+		"which tool mines this ore",
+		"ore tool requirement"
+	],
+	"keywords": [
+		"wood pickaxe",
+		"iron pickaxe",
+		"diamond pickaxe",
+		"fortune"
+	],
+	"category": "mining",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Tool tier matters. Stone handles basic ores, iron is needed for redstone, gold, and diamonds, and better picks mainly improve speed, durability, and enchant potential.",
+	"keyFacts": [
+		"If the tool tier is too low, some blocks break without dropping their intended resource.",
+		"Iron picks are the main threshold for mid-game mining because they unlock several valuable ores at once.",
+		"Fortune boosts yield on many ores, while Silk Touch is better when you want the block itself for later processing."
+	],
+	"commonMistakes": [
+		"Reaching diamonds or redstone with the wrong pick tier and expecting the ore to drop normally.",
+		"Upgrading to a better pick but ignoring enchantments, which matter more than raw tier once basic access is solved."
+	],
+	"relatedTopics": [
+		"ore-y-levels",
+		"mining-tips",
+		"best-enchant-setups"
+	]
+}

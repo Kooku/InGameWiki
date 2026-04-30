@@ -1,0 +1,33 @@
+{
+	"id": "mining-tips",
+	"title": "Mining Tips",
+	"aliases": [
+		"mining tips",
+		"branch mining",
+		"strip mining",
+		"caving vs branch mining"
+	],
+	"keywords": [
+		"branch mine",
+		"caving",
+		"lava",
+		"torches"
+	],
+	"category": "mining",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Use branch mining when you want controlled, low-risk ore access, and use caving when you can safely expose lots of stone or deepslate quickly. The best method depends on the ore and your gear.",
+	"keyFacts": [
+		"Modern diamonds are often found efficiently by deep caving or branch mining in deepslate layers around the high-yield band.",
+		"Caving is stronger for exposed ores and faster scouting, while branch mining is steadier and safer in dangerous terrain.",
+		"Bring blocks, food, water or bucket utility, and a plan for lava because deep mining mistakes are usually positioning mistakes."
+	],
+	"commonMistakes": [
+		"Using one mining method for every ore instead of adapting by height, biome, and danger.",
+		"Treating deep lava layers casually and losing gear to a single exposed pocket."
+	],
+	"relatedTopics": [
+		"ore-y-levels",
+		"mining-tool-requirements",
+		"slime-chunks"
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"id": "redstone-basics",
+	"title": "Redstone Basics",
+	"aliases": [
+		"redstone",
+		"what does each redstone component do",
+		"signal strength",
+		"item filter basics"
+	],
+	"keywords": [
+		"repeater",
+		"comparator",
+		"observer",
+		"piston door"
+	],
+	"category": "redstone",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Redstone starts with signal flow: dust carries power, repeaters refresh and delay it, comparators read container states, and observers detect block updates. Most common builds are combinations of those basics.",
+	"keyFacts": [
+		"Signal strength usually drops along redstone dust, which is why repeaters are used to refresh lines.",
+		"Comparators are core for item filters, storage logic, and any build that reads inventory levels.",
+		"Starter circuits worth learning are a simple clock, a piston door, and an item filter because they unlock many practical builds."
+	],
+	"commonMistakes": [
+		"Copying a circuit without understanding where the signal is actually weakening or being inverted.",
+		"Using observers everywhere when a repeater or comparator would make the circuit easier to reason about."
+	],
+	"relatedTopics": [
+		"farming-basics",
+		"ore-y-levels"
+	]
+}

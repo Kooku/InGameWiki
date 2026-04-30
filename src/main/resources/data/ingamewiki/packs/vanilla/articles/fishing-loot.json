@@ -1,0 +1,32 @@
+{
+	"id": "fishing-loot",
+	"title": "Fishing Loot",
+	"aliases": [
+		"fishing loot",
+		"what can you get from fishing",
+		"treasure from fishing",
+		"fishing drops"
+	],
+	"keywords": [
+		"treasure",
+		"junk",
+		"fish",
+		"luck of the sea"
+	],
+	"category": "loot",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Fishing can give fish, junk, or treasure. Treasure loot improves with a proper open-water setup and is more worthwhile with Luck of the Sea and Lure.",
+	"keyFacts": [
+		"Treasure items include enchanted books, bows, saddles, and nautilus shells.",
+		"Open-water requirements matter if you want the full treasure pool instead of a weaker setup.",
+		"Lure speeds catches, while Luck of the Sea shifts odds away from junk and toward treasure."
+	],
+	"commonMistakes": [
+		"Fishing in a cramped pool and assuming treasure rates are normal.",
+		"Expecting fishing to beat targeted farms for bulk food or rare mob-specific drops."
+	],
+	"relatedTopics": [
+		"mob-drops",
+		"enchantment-basics"
+	]
+}

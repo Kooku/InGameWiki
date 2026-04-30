@@ -26,6 +26,7 @@
 		"Expecting a nitwit or unemployed villager to restock trades."
 	],
 	"relatedTopics": [
-		"librarian-mending"
+		"villager-professions",
+		"villager-trade-levels"
 	]
 }

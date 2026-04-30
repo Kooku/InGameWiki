@@ -1,0 +1,33 @@
+{
+	"id": "end-city-loot",
+	"title": "End City Loot",
+	"aliases": [
+		"end city loot",
+		"end ship loot",
+		"elytra loot",
+		"is end city worth looting"
+	],
+	"keywords": [
+		"elytra",
+		"shulker shells",
+		"diamond gear",
+		"end ship"
+	],
+	"category": "dimensions",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "End cities are among the best loot structures in the game because they provide shulker shells, enchanted diamond gear, and possibly an elytra if the city has a ship.",
+	"keyFacts": [
+		"Only end ships contain elytra, so not every end city gives the headline reward.",
+		"Shulkers supply shells for shulker boxes, which are a major inventory upgrade.",
+		"Levitation and void exposure make movement mistakes more dangerous than the mobs themselves."
+	],
+	"commonMistakes": [
+		"Assuming every city includes a ship.",
+		"Looking down only at mobs and falling or launching yourself into a bad position."
+	],
+	"relatedTopics": [
+		"elytra-basics",
+		"structure-looting-priorities",
+		"mob-drops"
+	]
+}
