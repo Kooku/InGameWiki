@@ -1,0 +1,32 @@
+{
+	"id": "desert-temple-loot",
+	"title": "Desert Temple Loot",
+	"aliases": [
+		"desert temple loot",
+		"pyramid loot",
+		"desert pyramid chest",
+		"is desert temple worth looting"
+	],
+	"keywords": [
+		"tnt trap",
+		"golden apple",
+		"diamonds",
+		"bones"
+	],
+	"category": "structures",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Desert temples are usually worth looting early because they are safe to clear if you disarm the TNT trap first and can contain strong starter loot.",
+	"keyFacts": [
+		"Typical prizes include diamonds, emeralds, golden apples, gunpowder, bones, and enchanted books.",
+		"The main danger is the pressure-plate TNT trap beneath the central floor.",
+		"Early-game value is high because the risk is low compared with deeper hostile structures."
+	],
+	"commonMistakes": [
+		"Digging straight onto the pressure plate and blowing up the loot room.",
+		"Overvaluing the structure later when better loot sources are available."
+	],
+	"relatedTopics": [
+		"structure-looting-priorities",
+		"ancient-city-loot"
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "renewable-villager-trades",
+	"title": "Useful Renewable Villager Trades",
+	"aliases": [
+		"renewable villager trades",
+		"useful villager trades",
+		"best renewable trades",
+		"which villager trades are worth it"
+	],
+	"keywords": [
+		"emeralds",
+		"books",
+		"golden carrots",
+		"ender pearls"
+	],
+	"category": "villagers",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "The best renewable trades usually convert easy farmed materials into emeralds, then turn emeralds into long-term upgrades like enchanted books, golden carrots, arrows, and utility blocks.",
+	"keyFacts": [
+		"High-value emerald generators include farmer crop trades, fletcher stick trades, and cleric rotten flesh trades.",
+		"High-value purchases include librarian books, farmer golden carrots, mason quartz or brick blocks, and toolsmith or armorer diamond gear in some setups.",
+		"Renewable matters most when the alternative is a limited structure loot source or a slow manual farm."
+	],
+	"commonMistakes": [
+		"Judging a trade by raw emerald cost without asking whether the input material is easy to automate.",
+		"Buying random enchanted gear when a targeted book trade would be more reusable."
+	],
+	"relatedTopics": [
+		"best-early-villagers",
+		"villager-restocking",
+		"villager-trade-levels"
+	]
+}

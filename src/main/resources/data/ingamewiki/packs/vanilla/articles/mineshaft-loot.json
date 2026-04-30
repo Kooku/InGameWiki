@@ -1,0 +1,33 @@
+{
+	"id": "mineshaft-loot",
+	"title": "Mineshaft Loot",
+	"aliases": [
+		"mineshaft loot",
+		"abandoned mineshaft chest loot",
+		"cave spider mineshaft",
+		"is mineshaft worth looting"
+	],
+	"keywords": [
+		"rails",
+		"name tag",
+		"enchanted book",
+		"cave spiders"
+	],
+	"category": "loot",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Mineshafts are usually worth looting if you can handle cave spiders. They mix decent chest rewards with useful free materials like rails, wood, and string.",
+	"keyFacts": [
+		"Common reasons to clear a mineshaft are rails, name tags, seeds, enchanted books, and easy cave access.",
+		"Cave spider spawners make cramped sections more dangerous than a normal overworld cave.",
+		"Mineshafts also expose a lot of ore and side tunnels, so the structure can pay off even beyond chest loot."
+	],
+	"commonMistakes": [
+		"Rushing through webs and poison-heavy corridors without enough blocks and torches.",
+		"Ignoring how much free rail and wood the structure provides."
+	],
+	"relatedTopics": [
+		"dungeon-chest-loot",
+		"ore-y-levels",
+		"structure-looting-priorities"
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "elytra-basics",
+	"title": "Elytra Basics",
+	"aliases": [
+		"elytra",
+		"how do i get elytra",
+		"elytra basics",
+		"end ship wings"
+	],
+	"keywords": [
+		"end city",
+		"rockets",
+		"repair",
+		"gliding"
+	],
+	"category": "dimensions",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Elytra come from end ships attached to some end cities. Once you have one, combine it with fireworks for true flight and keep it repaired with Mending or phantom membranes.",
+	"keyFacts": [
+		"Elytra change travel speed and safety more than almost any other single item upgrade.",
+		"Firework rockets provide powered flight, while the elytra alone mainly supports gliding and momentum travel.",
+		"Durability matters, so long trips are much safer once the elytra has Unbreaking and Mending."
+	],
+	"commonMistakes": [
+		"Thinking the first end city you find is guaranteed to have a ship.",
+		"Launching on a long trip with low durability and no backup landing plan."
+	],
+	"relatedTopics": [
+		"end-city-loot",
+		"best-enchant-setups",
+		"enchantment-basics"
+	]
+}

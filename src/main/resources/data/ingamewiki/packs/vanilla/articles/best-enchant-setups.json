@@ -1,0 +1,33 @@
+{
+	"id": "best-enchant-setups",
+	"title": "Best Enchant Setups",
+	"aliases": [
+		"best enchants",
+		"best enchant setup per item",
+		"what enchants should i use",
+		"best armor enchants"
+	],
+	"keywords": [
+		"pickaxe",
+		"sword",
+		"armor",
+		"bow"
+	],
+	"category": "enchantments",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "A strong default setup is: pickaxe with Efficiency, Unbreaking, Mending, and either Fortune or Silk Touch; armor with Protection, Unbreaking, Mending; and weapons built around Sharpness or Power plus utility enchants.",
+	"keyFacts": [
+		"Most players eventually want both a Fortune pick and a Silk Touch pick because those roles conflict.",
+		"Boots and helmets have several situational choices, so the 'best' setup depends on whether you value traversal, underwater work, or pure combat.",
+		"Ranged gear scales well with Infinity or Mending depending on how comfortable you are supplying arrows."
+	],
+	"commonMistakes": [
+		"Trying to squeeze every niche enchant onto one item regardless of XP and anvil cost.",
+		"Using Silk Touch on your main resource-gathering pick and wondering why yields feel low."
+	],
+	"relatedTopics": [
+		"enchantment-basics",
+		"ore-y-levels",
+		"villager-professions"
+	]
+}

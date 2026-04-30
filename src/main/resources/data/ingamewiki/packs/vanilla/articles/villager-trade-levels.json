@@ -1,0 +1,34 @@
+{
+	"id": "villager-trade-levels",
+	"title": "Villager Trade Levels",
+	"aliases": [
+		"villager levels",
+		"novice apprentice journeyman expert master",
+		"trade levels",
+		"villager rank"
+	],
+	"keywords": [
+		"novice",
+		"apprentice",
+		"journeyman",
+		"expert",
+		"master"
+	],
+	"category": "villagers",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Villagers unlock trades in five tiers: novice, apprentice, journeyman, expert, and master. They gain progress by completing trades, not by time passing.",
+	"keyFacts": [
+		"More trades appear as the villager levels up, so weak early offers can hide strong later ones.",
+		"Experience comes from successful trades with that villager only.",
+		"Restocking replenishes uses, but it does not level the villager by itself."
+	],
+	"commonMistakes": [
+		"Ignoring a useful villager because its best trade is locked behind later tiers.",
+		"Confusing restock availability with villager experience progress."
+	],
+	"relatedTopics": [
+		"villager-professions",
+		"villager-restocking",
+		"renewable-villager-trades"
+	]
+}

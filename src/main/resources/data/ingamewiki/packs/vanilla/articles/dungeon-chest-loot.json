@@ -1,0 +1,33 @@
+{
+	"id": "dungeon-chest-loot",
+	"title": "Dungeon Chest Loot",
+	"aliases": [
+		"dungeon chest loot",
+		"spawner dungeon loot",
+		"monster room chest loot",
+		"is dungeon worth looting"
+	],
+	"keywords": [
+		"saddle",
+		"music disc",
+		"golden apple",
+		"name tag"
+	],
+	"category": "loot",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Simple dungeons are usually worth looting early because the risk is modest and the chests can contain strong utility items like saddles, name tags, and music discs.",
+	"keyFacts": [
+		"Dungeon chests are an early source of loot you cannot craft cheaply, especially saddles and name tags.",
+		"The attached spawner can also turn the room into a future XP or mob-drop farm.",
+		"Value drops later, but the structure still matters for specific utility items."
+	],
+	"commonMistakes": [
+		"Breaking the spawner immediately before deciding whether the room is worth converting into a farm.",
+		"Underlighting the room and getting overwhelmed in a tight cave fight."
+	],
+	"relatedTopics": [
+		"mineshaft-loot",
+		"mob-drops",
+		"structure-looting-priorities"
+	]
+}

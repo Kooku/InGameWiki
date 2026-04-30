@@ -1,0 +1,34 @@
+{
+	"id": "structure-looting-priorities",
+	"title": "Which Structures Are Worth Looting",
+	"aliases": [
+		"best structures to loot",
+		"is this worth looting",
+		"structure loot priorities",
+		"which structure should i loot first"
+	],
+	"keywords": [
+		"desert temple",
+		"bastion",
+		"ancient city",
+		"end city"
+	],
+	"category": "structures",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Early on, safe structures like desert temples are efficient. Mid-game, fortresses and bastions are worth it for progression. Late-game, end cities are premium loot, while ancient cities are specialized high-risk runs.",
+	"keyFacts": [
+		"Value depends on timing: a structure can be amazing early and mediocre later.",
+		"Progression structures are often worth more for unique unlocks than for raw chest value.",
+		"Travel cost and death risk matter just as much as chest tables when choosing a target."
+	],
+	"commonMistakes": [
+		"Copying end-game loot priorities into an undergeared early-world run.",
+		"Judging a structure only by chest screenshots instead of the danger and route needed to clear it."
+	],
+	"relatedTopics": [
+		"desert-temple-loot",
+		"bastion-loot",
+		"ancient-city-loot",
+		"end-city-loot"
+	]
+}

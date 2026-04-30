@@ -1,0 +1,35 @@
+{
+	"id": "ore-y-levels",
+	"title": "Best Y Levels for Ores",
+	"aliases": [
+		"ore y levels",
+		"best y level per ore",
+		"where to mine each ore",
+		"ore distribution"
+	],
+	"keywords": [
+		"diamond",
+		"iron",
+		"coal",
+		"redstone",
+		"lapis"
+	],
+	"category": "mining",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Quick guide: diamonds around Y -58, redstone deep deepslate, lapis in deeper caves, iron around Y 16 or mountain terrain, coal high in mountains, gold lower down or in badlands, and copper around mid-height caves.",
+	"keyFacts": [
+		"Diamonds improve the deeper you go, but lava risk rises near the bottom layers.",
+		"Iron and coal both benefit from mountain biomes because high terrain shifts their best generation bands upward.",
+		"Lapis, gold, and copper are often faster to find by caving than strict strip mining because exposed cave walls reveal more blocks.",
+		"Use this as a lookup article, then switch to tool and route planning for efficient runs."
+	],
+	"commonMistakes": [
+		"Using pre-1.18 mining advice for modern terrain generation.",
+		"Mining only one height everywhere instead of changing strategy by ore type and biome."
+	],
+	"relatedTopics": [
+		"mining-tool-requirements",
+		"mining-tips",
+		"slime-chunks"
+	]
+}

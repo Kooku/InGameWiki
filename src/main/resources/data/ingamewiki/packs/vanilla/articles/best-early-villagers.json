@@ -1,0 +1,33 @@
+{
+	"id": "best-early-villagers",
+	"title": "Best Villagers to Get Early",
+	"aliases": [
+		"best early villagers",
+		"which villagers should i get first",
+		"early trading hall",
+		"best villagers early game"
+	],
+	"keywords": [
+		"farmer",
+		"librarian",
+		"cleric",
+		"toolsmith"
+	],
+	"category": "villagers",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "For early survival, prioritize farmers for emerald income, librarians for key books, and clerics for rotten flesh trades plus ender pearl access. Toolsmiths and armorers become stronger once you can fund them.",
+	"keyFacts": [
+		"Farmers are easy to level because crops are renewable and cheap to mass-produce.",
+		"Librarians give the highest long-term value because books like Mending, Unbreaking, and Efficiency stay useful all game.",
+		"Clerics help convert mob loot into emeralds and can support blaze-rod and end progression."
+	],
+	"commonMistakes": [
+		"Building every profession at once instead of stabilizing one reliable emerald source first.",
+		"Overcommitting to smith villagers before you can afford the leveling cost."
+	],
+	"relatedTopics": [
+		"villager-professions",
+		"renewable-villager-trades",
+		"villager-restocking"
+	]
+}

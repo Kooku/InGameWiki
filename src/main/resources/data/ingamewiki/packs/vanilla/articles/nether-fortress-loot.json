@@ -1,0 +1,33 @@
+{
+	"id": "nether-fortress-loot",
+	"title": "Nether Fortress Loot",
+	"aliases": [
+		"nether fortress loot",
+		"fortress chest loot",
+		"blaze rods fortress",
+		"fortress worth looting"
+	],
+	"keywords": [
+		"blaze rods",
+		"nether wart",
+		"saddles",
+		"diamonds"
+	],
+	"category": "dimensions",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Nether fortresses matter more for progression than chest value. Blaze rods and nether wart are the main reasons to find one, while chest loot is a bonus.",
+	"keyFacts": [
+		"Fortresses provide blaze spawners for rods and brewing progression.",
+		"Nether wart naturally generates in fortress stair rooms and is needed for most useful potions.",
+		"Chest loot can include gold, diamonds, obsidian, saddles, and horse armor, but the structure is not mainly a treasure run."
+	],
+	"commonMistakes": [
+		"Treating a fortress like a bastion and entering undergeared just for chest loot.",
+		"Leaving without nether wart because you focused only on blaze fights."
+	],
+	"relatedTopics": [
+		"nether-progression",
+		"bastion-loot",
+		"potion-brewing-basics"
+	]
+}

@@ -1,0 +1,33 @@
+{
+	"id": "mob-drops",
+	"title": "Mob Drops and XP",
+	"aliases": [
+		"mob drops",
+		"what do mobs drop",
+		"rare drops",
+		"xp drops"
+	],
+	"keywords": [
+		"looting",
+		"gunpowder",
+		"ender pearls",
+		"bones"
+	],
+	"category": "loot",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Mob drops are best understood by category: utility drops like bones or string, progression drops like blaze rods or ender pearls, and rare drops that benefit heavily from Looting.",
+	"keyFacts": [
+		"Common farm targets include creepers for gunpowder, skeletons for bones and arrows, endermen for pearls, and blazes for rods.",
+		"Looting improves many item drop counts and can increase odds for some rare drops, but it does not multiply every drop equally.",
+		"XP value varies by mob, so the best item farm is not always the best experience farm."
+	],
+	"commonMistakes": [
+		"Building a farm for one item when villager trading or structure loot would get that resource faster.",
+		"Assuming Looting affects every kill source, including environmental kills, the same way."
+	],
+	"relatedTopics": [
+		"fishing-loot",
+		"nether-progression",
+		"best-enchant-setups"
+	]
+}

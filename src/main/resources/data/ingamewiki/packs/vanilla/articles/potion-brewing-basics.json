@@ -1,0 +1,33 @@
+{
+	"id": "potion-brewing-basics",
+	"title": "Potion Brewing Basics",
+	"aliases": [
+		"potions",
+		"potion brewing",
+		"ingredient tree",
+		"how do potions work"
+	],
+	"keywords": [
+		"nether wart",
+		"redstone",
+		"glowstone",
+		"splash potion"
+	],
+	"category": "potions",
+	"versionNote": "Java Edition 1.21.10",
+	"quickAnswer": "Most useful potions start with Awkward Potion from nether wart. Redstone usually extends duration, glowstone usually strengthens effects, gunpowder makes splash, and dragon's breath makes lingering.",
+	"keyFacts": [
+		"Blaze rods unlock brewing stands and blaze powder fuel, so fortress access is part of potion progression.",
+		"Not every potion supports both stronger and longer variants, so always check which upgrade path matters for the effect you want.",
+		"Core practical potions include Fire Resistance, Strength, Swiftness, Night Vision, Water Breathing, and Slow Falling."
+	],
+	"commonMistakes": [
+		"Skipping nether wart and trying to brew direct effects from water bottles.",
+		"Adding glowstone or redstone at the wrong stage and accidentally ruining the intended brew path."
+	],
+	"relatedTopics": [
+		"nether-fortress-loot",
+		"nether-progression",
+		"bastion-loot"
+	]
+}
